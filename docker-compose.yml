@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: vintod_mongodb
+    ports:
+      - "27017:27017"
+    # Inicia MongoDB con Replica Set habilitado ('rs0') sin autenticación para facilitar el desarrollo
+    command: ["--replSet", "rs0", "--bind_ip_all", "--port", "27017"]
+    volumes:
+      - /mnt/c/mongo:/data/db
+    healthcheck:
+      # Inicializa la replica automáticamente cuando el contenedor arranca
+      test: test $$(echo "rs.initiate().ok || rs.status().ok" | mongosh --quiet) -eq 1
+      interval: 10s
+      start_period: 30s

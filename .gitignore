@@ -1,0 +1,87 @@
+# ==========================================
+# Vintod - Git Ignore Configuration
+# ==========================================
+
+# ------------------------------------------
+# Environment & Secrets (Crucial)
+# ------------------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.cert
+*.crt
+
+# ------------------------------------------
+# Dependencies
+# ------------------------------------------
+node_modules/
+*/node_modules/
+
+# ------------------------------------------
+# Build Outputs & Compilations
+# ------------------------------------------
+dist/
+*/dist/
+build/
+*/build/
+out-tsc/
+*/out-tsc/
+.angular/
+*/.angular/
+
+# ------------------------------------------
+# Logs and Runtime Data
+# ------------------------------------------
+logs/
+*/logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# ------------------------------------------
+# Testing & Coverage
+# ------------------------------------------
+coverage/
+*/coverage/
+.nyc_output/
+
+# ------------------------------------------
+# IDEs, Editors & Tools
+# ------------------------------------------
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.sublime-project
+*.sublime-workspace
+.obsidian/
+
+# ------------------------------------------
+# OS generated files
+# ------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ------------------------------------------
+# Database & Cache
+# ------------------------------------------
+*.sqlite
+*.sqlite3
+*.db
+.cache/
+.parcel-cache/
+.eslintcache
+
