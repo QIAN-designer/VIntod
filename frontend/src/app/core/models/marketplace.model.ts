@@ -8,6 +8,9 @@ export interface Product {
   size: string;
   condition: string;
   category?: string;
+  image?: string;
+  images?: string[];
+  variants?: any[];
   sellerId?: string;
   sellerName?: string;
   slug?: string;

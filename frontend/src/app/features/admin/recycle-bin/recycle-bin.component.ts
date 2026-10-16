@@ -92,14 +92,23 @@ import { AppDatePipe } from '../../../shared/pipes/date.pipe';
 
       <!-- Cell Templates -->
       <ng-template #titleTpl let-prod="row">
-        <div>
-          <div class="font-semibold text-slate-900">{{ prod.title }}</div>
-          <div class="text-xs text-slate-400 truncate max-w-xs">{{ prod.description }}</div>
-          @if (prod.slug) {
-            <span class="inline-block mt-0.5 text-[10px] font-mono text-slate-500 bg-slate-100 px-1 rounded">
-              /{{ prod.slug }}
-            </span>
-          }
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-lg overflow-hidden bg-slate-100 border border-slate-200 shrink-0 flex items-center justify-center opacity-75">
+            @if (prod.image) {
+              <img [src]="prod.image" [alt]="prod.title" class="w-full h-full object-cover">
+            } @else {
+              <span class="text-xs text-slate-400">👕</span>
+            }
+          </div>
+          <div>
+            <div class="font-semibold text-slate-900">{{ prod.title }}</div>
+            <div class="text-xs text-slate-400 truncate max-w-xs">{{ prod.description }}</div>
+            @if (prod.slug) {
+              <span class="inline-block mt-0.5 text-[10px] font-mono text-slate-500 bg-slate-100 px-1 rounded">
+                /{{ prod.slug }}
+              </span>
+            }
+          </div>
         </div>
       </ng-template>
 

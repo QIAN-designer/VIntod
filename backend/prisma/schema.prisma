@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "windows", "debian-openssl-3.0.x"]
 }
 
 datasource db {
@@ -80,6 +81,7 @@ model Brand {
   name      String    @unique
   slug      String    @unique
   logoUrl   String?
+  images    String[]  // Galería de imágenes / banners de la marca
   isActive  Boolean   @default(true)
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
@@ -157,6 +159,10 @@ model ProductImage {
   sortOrder   Int            @default(0)
   createdAt   DateTime       @default(now())
 
+  // Polimorfismo / Identificación de entidad (ej: "PRODUCT_VARIANT", "USER", etc.)
+  entityType  String?        // Tipo de entidad asociada
+  entityId    String?        @db.ObjectId // ID de la entidad asociada
+
   // Clave foránea a Variante
   variantId   String         @db.ObjectId
 
@@ -164,5 +170,6 @@ model ProductImage {
   variant     ProductVariant @relation(fields: [variantId], references: [id], onDelete: Cascade)
 
   @@index([variantId, sortOrder])
+  @@index([entityType, entityId])
   @@map("product_images")
 }

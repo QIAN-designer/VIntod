@@ -15,8 +15,8 @@ import { ErrorStateComponent } from '../../../../shared/components/error-state/e
     } @else if (store.selectedProduct()) {
       <div class="bg-white shadow rounded-lg overflow-hidden">
         <div class="md:flex">
-          <div class="md:flex-shrink-0 md:w-1/2 bg-gray-200">
-             <img src="https://via.placeholder.com/600x800?text=Prenda" alt="Prenda" class="w-full h-full object-center object-cover">
+          <div class="md:flex-shrink-0 md:w-1/2 bg-gray-100 flex items-center justify-center">
+             <img [src]="store.selectedProduct()!.image || 'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=800&auto=format&fit=crop&q=80'" [alt]="store.selectedProduct()!.title" class="w-full h-full object-center object-cover">
           </div>
           <div class="p-8 md:w-1/2 flex flex-col">
             <div class="flex justify-between items-start">

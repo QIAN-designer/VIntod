@@ -9,7 +9,7 @@ services:
     # Inicia MongoDB con Replica Set habilitado ('rs0') sin autenticación para facilitar el desarrollo
     command: ["--replSet", "rs0", "--bind_ip_all", "--port", "27017"]
     volumes:
-      - /mnt/c/mongo:/data/db
+      - C:/Users/Mr.P/docker/mongo:/data/db
     healthcheck:
       # Inicializa la replica automáticamente cuando el contenedor arranca
       test: test $$(echo "rs.initiate().ok || rs.status().ok" | mongosh --quiet) -eq 1
